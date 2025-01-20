@@ -2,7 +2,7 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/
     activate server
     server-->>browser: HTML document (base SPA)
     deactivate server
@@ -12,43 +12,24 @@ sequenceDiagram
     server-->>browser: the CSS file
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
     activate server
     server-->>browser: the JavaScript file
     deactivate server
 
-    Note right of browser: The browser executes JavaScript, which manages content dynamically
+    Note right of browser: The browser executes the JavaScript code
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
     server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
     deactivate server
 
-    Note right of browser: The browser updates the content dynamically without reloading the page
-sequenceDiagram
-    participant browser
-    participant server
+    Note right of browser: Browser displays existing notes
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    Note right of browser: Send new note data (content, date)
     activate server
-    server-->>browser: HTML document (base SPA)
+    server-->>browser: Response confirming creation of new note
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->>browser: the CSS file
-    deactivate server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
-    activate server
-    server-->>browser: the JavaScript file
-    deactivate server
-
-    Note right of browser: The browser executes JavaScript, which manages content dynamically
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
-    deactivate server
-
-    Note right of browser: The browser updates the content dynamically without reloading the page
+    Note right of browser: Browser dynamically updates the page with the new note
