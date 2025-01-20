@@ -2,7 +2,7 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
     server-->>browser: HTML document (base SPA)
     deactivate server
@@ -12,7 +12,7 @@ sequenceDiagram
     server-->>browser: the CSS file
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
     activate server
     server-->>browser: the JavaScript file
     deactivate server
@@ -26,7 +26,7 @@ sequenceDiagram
 
     Note right of browser: Browser displays existing notes
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
     Note right of browser: Send new note data (content, date)
     activate server
     server-->>browser: Response confirming creation of new note
